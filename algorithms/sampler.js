@@ -1,8 +1,8 @@
 /*
 * @Author: ryan
 * @Date:   2016-09-28 12:44:43
-* @Last Modified by:   ryan
-* @Last Modified time: 2016-09-28 13:34:03
+* @Last Modified by:   Ryan Kophs
+* @Last Modified time: 2016-09-29 23:39:45
 *
 * Description: Choose random sample of input space P
 *  - Time complexity: O(2|n|) for sample_v1, O(|n|) for sample
@@ -12,6 +12,7 @@
 'use strict';
 
 const Random = require('../util/random.js');
+const array = require('../util/array.js');
 const Shuffle = require('./shuffle.js');
 
 class Sampler {
@@ -43,6 +44,17 @@ class Sampler {
 			}
 		}
 		return S;
+	}
+
+	sampleIndexes(eLen, n) {
+		let result = [];
+		while (result.length < n) {
+			for (let i = 0; i < n; i++) {
+				result.push(this.r.randomInt(0, eLen - 1));
+				result = array.unique(result);
+			}
+		}
+		return result.slice(0,n).sort((a,b) => {return a - b});
 	}
 }
 

@@ -2,7 +2,7 @@
 * @Author: ryan
 * @Date:   2016-09-30 12:01:53
 * @Last Modified by:   Ryan Kophs
-* @Last Modified time: 2016-10-04 10:10:04
+* @Last Modified time: 2016-10-04 10:30:13
 *
 * Description:
 *  - Notes:
@@ -192,10 +192,6 @@ const householder = function(a) {
 	console.log(h1);
 	return h1;
 }
-
-// let u = [[1],[1],[1],[1]];
-// //u = [[-1, 1, 1, 1]];
-// console.log(householder(u));
 
 module.exports = {
 	copy: copy,

@@ -2,7 +2,7 @@
 * @Author: ryan
 * @Date:   2016-09-28 14:24:20
 * @Last Modified by:   Ryan Kophs
-* @Last Modified time: 2016-10-04 10:30:07
+* @Last Modified time: 2016-10-25 15:21:16
 * Description: Computes the Jaccard Coefficient and Distance
 *  - Notes: http://cs-people.bu.edu/evimaria/cs565-16/lect3.pdf
 *  - http://infolab.stanford.edu/~ullman/mmds/ch3.pdf
@@ -84,6 +84,7 @@ class MinHashV1 {
 				matrix[i].push(bit);
 			}
 		}
+
 		return matrix;
 	}
 
@@ -232,10 +233,10 @@ const run = function() {
 	}
 	var E = array.union(data[0], data[1]);
 	var eLen = E.length;
-	console.log(s.minHash_v1(data[0], data[1], hashCount));
-	console.log(s.minHash(hashCount, rowCount, eLen, (r, c) => {
-		return array.includes(data[c], E[r]) ? 1 : 0;
-	}));
+	// console.log(s.minHash_v1(data[0], data[1], hashCount));
+	// console.log(s.minHash(hashCount, rowCount, eLen, (r, c) => {
+	// 	return array.includes(data[c], E[r]) ? 1 : 0;
+	// }));
 	console.log(s.jaccardCoefficient(data[0], data[1]));
 	console.log(s.cosign([2, 1, 0, 2, 0, 1, 1, 1], [2, 1, 1, 1, 1, 0, 1, 1]));
 }

@@ -2,7 +2,7 @@
 * @Author: ryan
 * @Date:   2016-09-30 12:01:53
 * @Last Modified by:   Ryan Kophs
-* @Last Modified time: 2016-10-04 10:30:13
+* @Last Modified time: 2016-10-25 15:23:22
 *
 * Description:
 *  - Notes:
@@ -143,61 +143,13 @@ const transpose = function(a) {
 	return aT;
 }
 
-const sign = function(x) {
-	if (x[0] < 0) {
-		return -1;
-	}
-	return 1;
-}
-
-const reflectorV = function(x) {
-	const n = x.length;
-	const e1 = e1Vector(n);
-	const scalar = sign(x)*magnitude(x);
-	for (let i = 0; i < n; i++){
-		e1[i][0] = e1[i][0]*scalar;
-	}
-	return difference(x, e1);
-}
-
-const column = function(a, j) {
-	const result = [];
-	for (let i = 0; i < a.length; i++) {
-		result.push([a[i][j]]);
-	}
-	return result;
-}
-
-const householder = function(a) {
-	const m = a.length;
-	const n = a[0].length;
-	const I = identity(m,m);
-	console.log(I);
-	let x = column(a, 0);
-	const v1 = reflectorV(x);
-	let prod = 0;
-	for (let i = 0; i < v1.length; i++) {
-		prod += (v1[i]*v1[i]);
-	}
-	prod = 2/prod;
-	const vvt = product(v1, transpose(v1));
-	console.log(vvt);
-	for (let i = 0; i < vvt.length; i++) {
-		for (let j = 0; j < vvt[i].length; j++) {
-			vvt[i][j] = vvt[i][j]*prod;
-		}
-	}
-	console.log(vvt);
-	const h1 = difference(I, vvt);
-	console.log(h1);
-	return h1;
-}
-
 module.exports = {
 	copy: copy,
+	difference: difference
 	determinant: determinant,
 	identity: identity,
 	magnitude: magnitude,
 	product: product,
+	sum: sum,
 	transpose: transpose
 }
